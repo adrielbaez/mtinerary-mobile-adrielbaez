@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import CallToAction from './components/CallToAction';
+import Footer from './components/Footer';
 import Home from './components/Home';
 
 export default function App() {
@@ -10,6 +11,7 @@ export default function App() {
     <StatusBar/>
     <ScrollView>
       <Home />
+      <Footer />
     </ScrollView>
     </>
   );

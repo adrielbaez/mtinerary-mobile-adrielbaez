@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'react-native';
 import CallToAction from './CallToAction';
+import Carrusel from './Carrusel';
 
 const Home = () => {
   const image = { uri: 'https://i.imgur.com/iJW5VBr.jpg' }
@@ -18,6 +19,7 @@ const Home = () => {
         </ImageBackground>
         </View>
         <CallToAction />
+        <Carrusel />
     </>
 
   );
@@ -39,17 +41,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.205)',
     alignItems: 'center',
-    borderRadius: 400
+    // borderRadius: 400
 
   },
   textHeroContainer:{
-    width:'70%'
+    width:'80%'
   },
   headingHero:{
-    fontSize: 40
+    fontSize: 60
   },
   textHero: {
-    color: 'white'
+    color: 'white',
+    fontSize: 18
   }
 });
 export default Home;

@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 
 const CallToAction = () => {
     const image = { uri: 'https://i.imgur.com/TioarFw.png' }
-    
+
     return (
         <>
             <View style={styles.container}>
@@ -17,6 +17,11 @@ const CallToAction = () => {
                     <Image source={image} style={styles.imgCallToAction}></Image>
                 </View>
             </View>
+            <View style={styles.contenedorBtn}>
+                <View style={styles.btn}>
+                    <Text  style={styles.btnText}>Show Cities</Text>
+                </View>
+            </View>
         </>
 
     );
@@ -24,32 +29,46 @@ const CallToAction = () => {
 const styles = StyleSheet.create({
     container: {
         height: 550,
-        marginTop:40,
-        alignItems:'center',
+        marginTop: 40,
+        marginBottom: 40,
+        alignItems: 'center',
     },
-    containerText:{
+    containerText: {
         width: '80%',
     },
-    callToAction:{
-        width:100,
-        height:100,
+    callToAction: {
+        width: 100,
+        height: 100,
         marginTop: 10,
-        alignItems:'center',
+        alignItems: 'center',
     },
-    imgCallToAction:{
-        width:250,
+    imgCallToAction: {
+        width: 250,
         height: 250,
-        
+
     },
-    textMain:{
-        fontWeight:'bold',
+    textMain: {
+        fontWeight: 'bold',
         fontSize: 40,
         textAlign: 'center'
     },
-    textComplementary:{
+    textComplementary: {
         color: '#0094ef',
         fontSize: 20
     },
+    contenedorBtn:{
+        alignItems: 'center'
+    },
+    btn: {
+        backgroundColor: '#0094ef',
+        padding: 10,
+        width: '40%',
+        borderRadius: 20
+    },
+    btnText:{
+        textAlign: 'center',
+        color: 'white'
+    }
 });
 export default CallToAction;
 
