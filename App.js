@@ -1,16 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import CallToAction from './components/CallToAction';
 import Home from './components/Home';
 
 export default function App() {
   return (
     <>
-    <View style={styles.container}>
-      <Text>Mi nueva app!</Text>
-      <StatusBar style="auto" />
-    </View>
-    <Home />
+    <StatusBar/>
+    <ScrollView>
+      <Home />
+    </ScrollView>
     </>
   );
 }
