@@ -17,19 +17,9 @@ export default class Carrusel extends React.Component {
                     id: 1
                 },
                 {
-                    src: 'https://i.imgur.com/rhoB36c.jpg',
-                    header: 'Rome',
-                    id: 2
-                },
-                {
                     src: 'https://i.imgur.com/9YcioRD.jpg',
                     header: 'London',
                     id: 3
-                },
-                {
-                    src: 'https://i.imgur.com/mcgDitS.jpg',
-                    header: 'Paris',
-                    id: 4
                 },
                 {
                     src: 'https://i.imgur.com/4ZmTscD.jpg',
@@ -50,26 +40,6 @@ export default class Carrusel extends React.Component {
                     src: 'https://i.imgur.com/sBrjv2i.jpg',
                     header: 'Seattle',
                     id: 7
-                  },
-                  {
-                    src: 'https://i.imgur.com/VoR2wpe.jpg',
-                    header: 'Berlin',
-                    id: 5
-                  },
-                  {
-                    src: 'https://i.imgur.com/ysCCgaI.jpg',
-                    header: 'Medellin',
-                    id: 7
-                  },
-                  {
-                    src: 'https://i.imgur.com/gnWrJVt.jpg',
-                    header: 'Tokyo',
-                    id: 6
-                  },
-                  {
-                    src: 'https://i.imgur.com/kFFMeHV.jpg',
-                    header: 'Madrid',
-                    id: 8
                   }
             ]
         }
@@ -82,7 +52,7 @@ export default class Carrusel extends React.Component {
                 height: 350,
                 marginLeft: 15,
             }}>
-                <Text style={{ fontSize: 30, backgroundColor:'rgba(0, 0, 0, 0.712)', color: 'white', textAlign:'center',borderRadius: 25}}>{item.header}</Text>
+                <Text style={{ fontSize: 30, backgroundColor:'rgba(0, 0, 0, 0.2)', color: 'white', textAlign:'center'}}>{item.header}</Text>
                 <Text>{item.text}</Text>
             </ImageBackground>
 
@@ -91,7 +61,7 @@ export default class Carrusel extends React.Component {
 
     render() {
         return (
-            <SafeAreaView style={{ flex: 1, backgroundColor: 'white', paddingTop: 50, paddingBottom:50 }}>
+            <SafeAreaView style={{ flex: 1, paddingTop: 50, paddingBottom:50 }}>
                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', }}>
                     <Carousel
                         layout={"default"}
