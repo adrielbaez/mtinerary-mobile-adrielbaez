@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'react-native';
-const Welcome = () => {
+const Welcome = (props) => {
     const image = { uri: 'https://i.imgur.com/iJW5VBr.jpg' }
     const imageLogo = { uri: 'https://i.imgur.com/Dq3x1hl.png' }
     return ( 
@@ -12,8 +12,8 @@ const Welcome = () => {
                     <Text style={styles.title}>MyTinerary</Text>
                     <Text style={{fontSize:20, color:'white'}}>Find your perfect trip, designed by insiders who know and love their cities!</Text>
                 </View>
-                <View style={styles.boton}>
-                    <Text>Let's Go</Text>
+                <View style={styles.boton} >
+                    <Text onPress={()=> props.navigation.navigate('home')}>Let's Go</Text>
                 </View>
             </ImageBackground>
         </>

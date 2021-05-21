@@ -1,8 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'react-native';
-import Carrusel from '../components/Carrusel'
-const Home = () => {
+const Home = (props) => {
     const image = { uri: 'https://i.imgur.com/R9YLTAs.jpg' }
 
     let cities = [
@@ -80,7 +79,7 @@ const Home = () => {
                         <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Want to know more about cities?</Text>
                     </View>
                     <View style={styles.boton}>
-                        <Text>Go to Cities</Text>
+                        <Text onPress={()=> props.navigation.navigate('cities')}>Go to Cities</Text>
                     </View>
                    
                 </ImageBackground>
@@ -90,7 +89,6 @@ const Home = () => {
 }
 const styles = StyleSheet.create({
     welcome: {
-        marginTop: 40,
         width: '100%',
         backgroundColor: 'rgba(0, 0, 0, 0.2)',
         padding: 10
