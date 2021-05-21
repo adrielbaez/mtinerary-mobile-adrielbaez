@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import Drawer from './navigation/Drawer';
 import { applyMiddleware, createStore } from 'redux';
@@ -14,9 +15,11 @@ const myStore = createStore(mainReducer, applyMiddleware(thunk))
 export default function App() {
   return (
     <Provider store={myStore}>
-      <NavigationContainer>
-        <Drawer />
-      </NavigationContainer>
+      <PaperProvider>
+        <NavigationContainer>
+          <Drawer />
+        </NavigationContainer>
+      </PaperProvider>
     </Provider>
   );
 }

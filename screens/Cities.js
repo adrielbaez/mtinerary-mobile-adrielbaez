@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import citiesActions from '../redux/actions/citiesAction'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, ActivityIndicator } from 'react-native';
+import { Avatar, Button, Card, Title, Paragraph,TextInput } from 'react-native-paper';
 import axios from 'axios';
 const Cities = (props) => {
     useEffect(() => {
@@ -12,25 +13,23 @@ const Cities = (props) => {
     return (
         <ScrollView>
             <Text style={{ fontSize: 40, fontWeight: 'bold', textAlign: 'center' }}>Cities</Text>
-            <TextInput style={styles.input} placeholder="Searh Cities" keyboardType="name-phone-pad" onChangeText={(e) => props.searchCities(e)} />
+            <TextInput selectionColor="black" underlineColorÇ="blue" style={styles.input} placeholder="Searh Cities" keyboardType="name-phone-pad" onChangeText={(e) => props.searchCities(e)} />
             {props.loading
-                ? <Text>cargando....</Text>
+                ? <ActivityIndicator size="large" color="black" />
                 : props.newCities.length === 0
                     ? <Text>no hay Cities</Text>
                     : props.newCities.map(city => {
                         return (
-                            <View key={city._id} style={[styles.card, { alignItems: 'center' }]}>
-                                <View>
-                                    <Text style={{ fontSize: 30, fontWeight: 'bold' }}>{city.city} - {city.country}</Text>
-                                </View>
-                                <Image source={{ uri: city.src }} style={styles.imageCity}></Image>
-                                <View style={{ width: '95%' }}>
-                                    <Text style={{ textAlign: 'justify', fontSize: 15 }}>{city.description}</Text>
-                                </View>
-                                <View style={styles.boton}>
-                                    <Text onPress={() => props.navigation.navigate('itineraries', { idCity: city._id })}>Itinerarios {city.city}</Text>
-                                </View>
-                            </View>
+                            <>
+                                <Card>
+                                    <Card.Content>
+                                        <Title style={{ textAlign: 'center' }}>{city.city} - {city.country}</Title>
+                                        <Card.Cover source={{ uri: city.src }} />
+                                        <Paragraph>{city.description}</Paragraph>
+                                        <Button mode="contained" color="blue" dark={true} onPress={() => props.navigation.navigate('itineraries', { idCity: city._id })}>Itineraries {city.city}</Button>
+                                    </Card.Content>
+                                </Card>
+                            </>
                         )
                     })
             }
@@ -56,10 +55,6 @@ const styles = StyleSheet.create({
         height: 200,
     },
     input: {
-        height: 40,
-        margin: 12,
-        borderBottomWidth: 1,
-        borderColor: 'blue',
         textAlign: 'center'
 
     }

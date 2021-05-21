@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/ItinerariesAction'
 import { faCalendarTimes, faHourglass, faMoneyBill, faStopwatch, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -55,7 +55,7 @@ const Itineraries = (props) => {
                         <Text style={{color: 'white',textAlign: 'center', fontSize:25,  backgroundColor: 'rgba(0, 0, 0, 0.2)',borderRadius:40,padding: 10}}>Activities</Text>
                         <View>
                             {activities.length === 0
-                                ? <Text>cargando...</Text>
+                                ? <ActivityIndicator size="large" color="black" />
                                 : activities.map(activity => {
                                     return (
                                         <ImageBackground source={{ uri: activity.image }} style={styles.imgActivity}>
