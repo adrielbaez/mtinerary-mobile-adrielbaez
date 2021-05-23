@@ -1,7 +1,7 @@
 import {createDrawerNavigator} from '@react-navigation/drawer'
 import React from 'react'
 import { Text } from 'react-native'
-import {WelcomeStack, CitiesStack, HomeStack} from './Stack'
+import {WelcomeStack, CitiesStack, HomeStack, SignInStack, SignUpStack} from './Stack'
 
 const drawer = createDrawerNavigator()
 
@@ -16,6 +16,12 @@ const Drawer = (props) => {
             }} />
             <drawer.Screen name="cities" component={CitiesStack} options={{
                 title: 'Cities',
+            }}/>
+            <drawer.Screen name="signIn" component={SignInStack} options={{
+                title: 'Sign In',
+            }}/>
+            <drawer.Screen name="signUp" component={SignUpStack} options={{
+                title: 'Sign Up',
             }}/>
         </drawer.Navigator>
     )

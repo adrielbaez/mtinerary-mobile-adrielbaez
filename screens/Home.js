@@ -1,6 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'react-native';
+import { Button} from 'react-native-paper';
+import globalStyles from '../styles/globalStyles'
 const Home = (props) => {
     const image = { uri: 'https://i.imgur.com/R9YLTAs.jpg' }
 
@@ -78,9 +80,7 @@ const Home = (props) => {
                     <View style={{ marginTop: 40 }}>
                         <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Want to know more about cities?</Text>
                     </View>
-                    <View style={styles.boton}>
-                        <Text onPress={()=> props.navigation.navigate('cities')}>Go to Cities</Text>
-                    </View>
+                    <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={()=> props.navigation.navigate('cities')}>Go to Cities</Button>
                    
                 </ImageBackground>
             </ScrollView>
@@ -109,11 +109,7 @@ const styles = StyleSheet.create({
         height: 400
     },
     boton: {
-        height: 50,
-        width: 150,
-        backgroundColor: '#90ee90',
-        alignItems: 'center',
-        justifyContent: 'center',
+        width: 200,
         borderRadius: 50,
         marginTop: 40,
         marginBottom: 30,

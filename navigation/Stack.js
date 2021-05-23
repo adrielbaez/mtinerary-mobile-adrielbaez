@@ -5,6 +5,8 @@ import Home from '../screens/Home';
 import Welcome from '../screens/Welcome';
 import Cities from '../screens/Cities';
 import Itineraries from '../screens/Itineraries';
+import SignIn from '../screens/SignIn';
+import SignUp from '../screens/SignUp';
 const stack = createStackNavigator()
 
 export const WelcomeStack = () => {
@@ -12,6 +14,7 @@ export const WelcomeStack = () => {
         <stack.Navigator>
             <stack.Screen name="welcome" component={Welcome} />
             <stack.Screen name="home" component={Home} />
+            <stack.Screen name="signIn" component={SignIn} />
         </stack.Navigator>
     )
 }
@@ -19,6 +22,20 @@ export const HomeStack = () => {
     return (
         <stack.Navigator>
             <stack.Screen name="home" component={Home} />
+        </stack.Navigator>
+    )
+}
+export const SignInStack = () => {
+    return (
+        <stack.Navigator>
+            <stack.Screen name="signIn" component={SignIn} />
+        </stack.Navigator>
+    )
+}
+export const SignUpStack = () => {
+    return (
+        <stack.Navigator>
+            <stack.Screen name="signUp" component={SignUp} />
         </stack.Navigator>
     )
 }

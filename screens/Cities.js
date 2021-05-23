@@ -21,7 +21,7 @@ const Cities = (props) => {
                     : props.newCities.map(city => {
                         return (
                             <>
-                                <Card>
+                                <Card key={city._id}>
                                     <Card.Content>
                                         <Title style={{ textAlign: 'center' }}>{city.city} - {city.country}</Title>
                                         <Card.Cover source={{ uri: city.src }} />

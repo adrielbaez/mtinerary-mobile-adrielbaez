@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'react-native';
+import { Button} from 'react-native-paper';
 const Welcome = (props) => {
     const image = { uri: 'https://i.imgur.com/iJW5VBr.jpg' }
     const imageLogo = { uri: 'https://i.imgur.com/Dq3x1hl.png' }
@@ -12,9 +13,7 @@ const Welcome = (props) => {
                     <Text style={styles.title}>MyTinerary</Text>
                     <Text style={{fontSize:20, color:'white'}}>Find your perfect trip, designed by insiders who know and love their cities!</Text>
                 </View>
-                <View style={styles.boton} >
-                    <Text onPress={()=> props.navigation.navigate('home')}>Let's Go</Text>
-                </View>
+                <Button style={styles.boton} mode="contained" color="blue" onPress={()=> props.navigation.navigate('home')}>Let's Go</Button>
             </ImageBackground>
         </>
      );
@@ -30,12 +29,10 @@ const styles = StyleSheet.create({
         height: 300,
     },
     boton:{
-        height:50,
-        width: 150,
-        backgroundColor:'#90ee90',
-        alignItems:'center',
-        justifyContent: 'center',
-        borderRadius: 50
+        width: 200,
+        borderRadius: 50,
+        marginTop: 40,
+        marginBottom: 30,
     },
     textContent:{
         width:'85%',

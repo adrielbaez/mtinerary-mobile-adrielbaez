@@ -3,8 +3,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/ItinerariesAction'
-import { faCalendarTimes, faHourglass, faMoneyBill, faStopwatch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {  faMoneyBill, faStopwatch} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { Button} from 'react-native-paper';
+import globalStyles from '../styles/globalStyles'
 const Itineraries = (props) => {
     const [view, setView] = useState({ show: false, textBtn: 'View More' })
     const [activities, setActivities] = useState([])
@@ -38,8 +40,8 @@ const Itineraries = (props) => {
                 </View>
                 {/* precio y hora*/}
                 <View style={{ flexDirection: 'row', alignItems: 'center'}}>
-                    <Text>Price:{new Array(itinerary.price).fill(0).map((elemento, index) =>  <FontAwesomeIcon key={index} icon={ faMoneyBill } style={styles.icon}/>)}</Text>
-                    <Text>Duration: {new Array(itinerary.duration).fill(0).map((elemento, index) =>  <FontAwesomeIcon key={index} icon={ faStopwatch } style={styles.icon}/>)}</Text>
+                    <Text>Price:{new Array(itinerary.price).fill(0).map((elemento, index) =>  <FontAwesomeIcon key={index+1} icon={ faMoneyBill } style={styles.icon}/>)}</Text>
+                    <Text>Duration: {new Array(itinerary.duration).fill(0).map((elemento, index) =>  <FontAwesomeIcon key={index+2} icon={ faStopwatch } style={styles.icon}/>)}</Text>
                 </View>
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Text>{itinerary.usersLiked.length}</Text>
@@ -47,7 +49,7 @@ const Itineraries = (props) => {
                 {/* hast */}
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom:20 }}>
                     {itinerary.hashtags.map(hashtag => {
-                        return <Text>{hashtag}</Text>
+                        return <Text key={hashtag}>{hashtag}</Text>
                     })}
                 </View>
                 {view.show &&
@@ -58,7 +60,7 @@ const Itineraries = (props) => {
                                 ? <ActivityIndicator size="large" color="black" />
                                 : activities.map(activity => {
                                     return (
-                                        <ImageBackground source={{ uri: activity.image }} style={styles.imgActivity}>
+                                        <ImageBackground key={activity.title} source={{ uri: activity.image }} style={styles.imgActivity}>
                                             <Text style={{color: 'white',textAlign: 'center', fontSize:20,  backgroundColor: 'rgba(0, 0, 0, 0.2)',borderRadius:40,padding: 10}}>{activity.title}</Text>
                                         </ImageBackground>
                                     )
@@ -68,9 +70,8 @@ const Itineraries = (props) => {
                         </View>
                     </View>
                 }
-                <View style={styles.boton}>
-                    <Text onPress={changeStateBtn}>{view.textBtn}</Text>
-                </View>
+                <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={changeStateBtn}>{view.textBtn}</Button>
+
             </View>
         </ScrollView>
     );
