@@ -58,7 +58,7 @@ const SignIn = (props) => {
                     {errores.lastName !== '' ? (<Text style={globalStyles.messageError}>{errores.lastName}</Text>) : null}
                     <TextInput label="Your Mail" mode="outlined" value={newUser.email} onChangeText={(e) => readInput(e, 'email')} />
                     {errores.email !== '' ? (<Text style={globalStyles.messageError}>{errores.lastName}</Text>) : null}
-                    <TextInput label="Your Password" mode="outlined" value={newUser.password} onChangeText={(e) => readInput(e, 'password')} />
+                    <TextInput label="Your Password" mode="outlined" secureTextEntry value={newUser.password} onChangeText={(e) => readInput(e, 'password')} />
                     {errores.password !== '' ? (<Text style={globalStyles.messageError}>{errores.lastName}</Text>) : null}
                     <TextInput label="Your Picture Profile" mode="outlined" value={newUser.userPicture} onChangeText={(e) => readInput(e, 'userPicture')} />
                     {errores.userPicture !== '' ? (<Text style={globalStyles.messageError}>{errores.lastName}</Text>) : null}

@@ -4,7 +4,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
-import Drawer from './navigation/Drawer';
+import Stack from './navigation/Stack';
 import { applyMiddleware, createStore } from 'redux';
 import mainReducer from './redux/reducers/mainReducer'
 import { Provider } from 'react-redux';
@@ -17,7 +17,7 @@ export default function App() {
     <Provider store={myStore}>
       <PaperProvider>
         <NavigationContainer>
-          <Drawer />
+          <Stack />
         </NavigationContainer>
       </PaperProvider>
     </Provider>

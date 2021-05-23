@@ -2,7 +2,6 @@ import axios from 'axios'
 
 const authActions = {
     createNewUser: (newUser) => {
-        console.log(newUser);
         return async (dispatch, getState) => {
             try {
                 let response = await axios.post('https://mytinerary-adriel.herokuapp.com/api/user/signup', newUser)

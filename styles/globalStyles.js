@@ -41,6 +41,14 @@ const globalStyles = StyleSheet.create({
     messageError:{
         color: 'red',
         fontSize:15
+    },contenedorUser:{
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    imgUser:{
+        width:50,
+        height:50,
+        borderRadius:10,
     }
 });
 

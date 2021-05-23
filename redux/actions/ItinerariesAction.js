@@ -40,6 +40,7 @@ const itinerariesActions = {
         }
     },
     like: (id, token) => {
+      console.log(id, token);
         return async (dispatch, getState) => {
             try {
                 const response = await axios.post('https://mytinerary-adriel.herokuapp.com/api/likes', { id, token }, {
@@ -69,6 +70,7 @@ const itinerariesActions = {
         }
     },
     addComment: (comment, token, idItinerary) => {
+      console.log(comment, token, idItinerary);
         return async (dispatch, getState) => {
           try {
             const response = await axios.post('https://mytinerary-adriel.herokuapp.com/api/comments', {comment, token, idItinerary} , {

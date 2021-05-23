@@ -31,13 +31,13 @@ const SignIn = (props) => {
         Alert.alert('Hi' + 'welcome to MyTinerary! 🌎🌞')
         props.navigation.navigate('home')
     }
-    console.log(props.userLogged);
+    // console.log(props.userLogged);
     return (
         <View style={{justifyContent:'center', alignItems:'center', height:'100%'}}>
             <Text>{props.userLogged ?props.userLogged.firstName :null}</Text>
             <View style={[globalStyles.allScreem, { width: '90%' }]}>
                 <TextInput label="Your Mail" mode="outlined" value={userLogin.email} onChangeText={(e)=> readInput(e, 'email')}/>
-                <TextInput label="Your Password"  mode="outlined" value={userLogin.password} onChangeText={(e)=> readInput(e, 'password')}/>
+                <TextInput label="Your Password"  mode="outlined" secureTextEntry value={userLogin.password} onChangeText={(e)=> readInput(e, 'password')}/>
             </View>
             <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={sendDataUser} >Sign In</Button>
         </View>

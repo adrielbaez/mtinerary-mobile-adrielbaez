@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'react-native';
-import { Button} from 'react-native-paper';
+import { Button, FAB, Portal } from 'react-native-paper';
 import globalStyles from '../styles/globalStyles'
 const Home = (props) => {
     const image = { uri: 'https://i.imgur.com/R9YLTAs.jpg' }
@@ -38,6 +38,12 @@ const Home = (props) => {
             id: 7
         }
     ]
+    const [state, setState] = React.useState({ open: false });
+
+    const onStateChange = ({ open }) => setState({ open });
+
+    const { open } = state;
+
     return (
         <>
             <ScrollView>
@@ -47,28 +53,28 @@ const Home = (props) => {
                         <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Take a small break for coffee and enjoy</Text>
                     </View>
                     <ScrollView  >
-                    <View style={{ width: 400, height: 300, flexDirection: 'row' }}>
-                        <ImageBackground source={{ uri: cities[0].src }} style={{ margin:5,flex: 1 }}>
-                        <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[0].header}</Text>
-                        </ImageBackground>
-                        <View style={{ flex: 1 }}>
-                            <ImageBackground source={{ uri: cities[1].src }} style={{margin:5, flex: 1 }}>
-                            <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[1].header}</Text>
+                        <View style={{ width: 400, height: 300, flexDirection: 'row' }}>
+                            <ImageBackground source={{ uri: cities[0].src }} style={{ margin: 5, flex: 1 }}>
+                                <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[0].header}</Text>
                             </ImageBackground>
-                            <ImageBackground source={{ uri: cities[2].src }} style={{ margin:5,flex: 1 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[2].header}</Text></ImageBackground>
+                            <View style={{ flex: 1 }}>
+                                <ImageBackground source={{ uri: cities[1].src }} style={{ margin: 5, flex: 1 }}>
+                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[1].header}</Text>
+                                </ImageBackground>
+                                <ImageBackground source={{ uri: cities[2].src }} style={{ margin: 5, flex: 1 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[2].header}</Text></ImageBackground>
+                            </View>
                         </View>
-                    </View>
-                    <View style={{ width: 400, height: 300, flexDirection: 'row'}}>
-                        <View style={{ flex: 1 }}>
-                            <ImageBackground source={{ uri: cities[3].src }} style={{margin:5, flex: 1 }}>
-                            <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[3].header}</Text>
+                        <View style={{ width: 400, height: 300, flexDirection: 'row' }}>
+                            <View style={{ flex: 1 }}>
+                                <ImageBackground source={{ uri: cities[3].src }} style={{ margin: 5, flex: 1 }}>
+                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[3].header}</Text>
+                                </ImageBackground>
+                                <ImageBackground source={{ uri: cities[4].src }} style={{ margin: 5, flex: 1 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[4].header}</Text></ImageBackground>
+                            </View>
+                            <ImageBackground source={{ uri: cities[5].src }} style={{ margin: 5, flex: 1 }}>
+                                <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[5].header}</Text>
                             </ImageBackground>
-                            <ImageBackground source={{ uri: cities[4].src }} style={{margin:5,flex: 1 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[4].header}</Text></ImageBackground>
                         </View>
-                        <ImageBackground source={{ uri: cities[5].src }} style={{margin:5, flex: 1 }}>
-                        <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[5].header}</Text>
-                        </ImageBackground>
-                    </View>
                         {/* {cities.map((city, index) => {
                             return (
                                 <ImageBackground key={index} source={{ uri: city.src }} style={styles.cityImage}>
@@ -80,9 +86,46 @@ const Home = (props) => {
                     <View style={{ marginTop: 40 }}>
                         <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Want to know more about cities?</Text>
                     </View>
-                    <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={()=> props.navigation.navigate('cities')}>Go to Cities</Button>
-                   
+                    <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={() => props.navigation.navigate('cities')}>Go to Cities</Button>
+
+
                 </ImageBackground>
+                <Portal>
+                    <FAB.Group
+                    color="blue"
+                        open={open}
+                        icon={open ? 'calendar-today' : 'plus'}
+                        actions={[
+                            {
+                                icon: 'star',
+                                label: 'Sign Up',
+                                onPress: () => props.navigation.navigate('signUp'),
+                            },
+                            {
+                                icon: 'email',
+                                label: 'Sign In',
+                                onPress: () => props.navigation.navigate('signIn'),
+                            },
+                            {
+                                icon: 'bell',
+                                label: 'Cities',
+                                onPress: () => props.navigation.navigate('cities'),
+                                small: false,
+                            },
+                            {
+                                icon: 'star',
+                                label: 'Home',
+                                onPress: () => props.navigation.navigate('home'),
+                            }
+                        ]}
+                        onStateChange={onStateChange}
+                        onPress={() => {
+                            if (open) {
+                                // do something if the speed dial is open
+                            }
+                        }}
+                    />
+                </Portal>
             </ScrollView>
         </>
     );

@@ -2,14 +2,19 @@ import {createDrawerNavigator} from '@react-navigation/drawer'
 import React from 'react'
 import { Text } from 'react-native'
 import {WelcomeStack, CitiesStack, HomeStack, SignInStack, SignUpStack} from './Stack'
+import {connect} from 'react-redux';
+import authActions from '../redux/actions/authActions';
+import UserLogged from '../components/UserLogged'
 
 const drawer = createDrawerNavigator()
 
 const Drawer = (props) => {
+    console.log(props.userLogged);
     return (
+        <>
         <drawer.Navigator>
             <drawer.Screen name="welcome" component={WelcomeStack} options={{
-                title: 'Welcome'
+                title: 'Welcome',
             }} />
             <drawer.Screen name="home" component={HomeStack} options={{
                 title: 'Home'
@@ -24,7 +29,18 @@ const Drawer = (props) => {
                 title: 'Sign Up',
             }}/>
         </drawer.Navigator>
+        </>
     )
 }
 
-export default Drawer
+const mapStateToProps = state => {
+    return {
+      userLogged: state.authReducer.userLogged
+    }
+  }
+  
+//   const mapDispatchToProps = {
+//     iniciarSesionLS: authActions.iniciarSesionLS,
+//   }
+  
+  export default connect(mapStateToProps, null)(Drawer)
