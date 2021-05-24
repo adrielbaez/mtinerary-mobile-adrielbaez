@@ -21,7 +21,7 @@ const globalStyles = StyleSheet.create({
     botonesMedium:{
         width: 200,
         borderRadius: 50,
-        marginTop: 40,
+        marginTop: 10,
         marginBottom: 30,
     },
     centrarContent:{
@@ -49,7 +49,13 @@ const globalStyles = StyleSheet.create({
         width:50,
         height:50,
         borderRadius:10,
-    }
+    },
+    signIn:{
+        width:'100%',
+        height:'100%',
+        justifyContent:'center',
+    },
+
 });
 
 export default globalStyles;

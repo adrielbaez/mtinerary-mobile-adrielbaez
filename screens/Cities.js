@@ -12,24 +12,24 @@ const Cities = (props) => {
 
     return (
         <ScrollView>
-            <Text style={{ fontSize: 40, fontWeight: 'bold', textAlign: 'center' }}>Cities</Text>
-            <TextInput selectionColor="black" underlineColorÇ="blue" style={styles.input} placeholder="Searh Cities" keyboardType="name-phone-pad" onChangeText={(e) => props.searchCities(e)} />
+            {/* <Text style={{ fontSize: 40, fontWeight: 'bold', textAlign: 'center' }}>Cities</Text> */}
+            <View style={{margin:10}}>
+            <TextInput mode="flat" selectionColor="black" underlineColor="#0BC6C3" style={styles.input}  placeholder="Searh Cities" keyboardType="name-phone-pad" onChangeText={(e) => props.searchCities(e)} />
+            </View>
             {props.loading
                 ? <ActivityIndicator size="large" color="black" />
                 : props.newCities.length === 0
                     ? <Text>no hay Cities</Text>
                     : props.newCities.map(city => {
                         return (
-                            <>
-                                <Card key={city._id}>
+                                <Card key={city._id} style={{backgroundColor:'#0BC6C3', margin:10}}>
                                     <Card.Content>
-                                        <Title style={{ textAlign: 'center' }}>{city.city} - {city.country}</Title>
+                                        <Title style={{ fontSize: 25, color: 'white', textAlign: 'center', marginBottom:10, marginTop:10 }}>{city.city} - {city.country}</Title>
                                         <Card.Cover source={{ uri: city.src }} />
-                                        <Paragraph>{city.description}</Paragraph>
-                                        <Button mode="contained" color="blue" dark={true} onPress={() => props.navigation.navigate('itineraries', { idCity: city._id })}>Itineraries {city.city}</Button>
+                                        <Paragraph  style={{ fontSize: 15, color: 'white', textAlign: 'center', marginBottom:10, marginTop:10 }}>{city.description}</Paragraph>
+                                        <Button mode="contained" color="#E7B61B" dark={true} onPress={() => props.navigation.navigate('itineraries', { idCity: city._id })}>Itineraries {city.city}</Button>
                                     </Card.Content>
                                 </Card>
-                            </>
                         )
                     })
             }
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
         height: 200,
     },
     input: {
-        textAlign: 'center'
-
+        textAlign: 'center',
+        borderColor:'#0BC6C3',
     }
 })
 

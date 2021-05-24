@@ -47,7 +47,7 @@ const Home = (props) => {
     return (
         <>
             <ScrollView>
-                <ImageBackground source={image} style={styles.containertHero}>
+                <View style={styles.containertHero}>
                     <View style={styles.welcome}>
                         <Text style={{ fontSize: 40, color: 'white', textAlign: 'center' }}>MyTinerary</Text>
                         <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Take a small break for coffee and enjoy</Text>
@@ -89,7 +89,7 @@ const Home = (props) => {
                     <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={() => props.navigation.navigate('cities')}>Go to Cities</Button>
 
 
-                </ImageBackground>
+                </View>
                 <Portal>
                     <FAB.Group
                     color="blue"
@@ -133,12 +133,13 @@ const Home = (props) => {
 const styles = StyleSheet.create({
     welcome: {
         width: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        // backgroundColor: 'rgba(0, 0, 0, 0.2)',
         padding: 10
 
     },
     containertHero: {
         alignItems: 'center',
+        backgroundColor: '#E7B61B'
     },
     cityImage: {
         width: 300,

@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
+import {DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import Stack from './navigation/Stack';
 import { applyMiddleware, createStore } from 'redux';
@@ -17,7 +17,7 @@ export default function App() {
     <Provider store={myStore}>
       <PaperProvider>
         <NavigationContainer>
-          <Stack />
+          <Stack DefaultTheme={DefaultTheme} />
         </NavigationContainer>
       </PaperProvider>
     </Provider>

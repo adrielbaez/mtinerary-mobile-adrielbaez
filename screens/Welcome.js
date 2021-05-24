@@ -11,7 +11,7 @@ const Welcome = (props) => {
                 <Image source={imageLogo} style={styles.logo}></Image>
                 <View style={styles.textContent}>
                     <Text style={styles.title}>MyTinerary</Text>
-                    <Text style={{fontSize:20, color:'white'}}>Find your perfect trip, designed by insiders who know and love their cities!</Text>
+                    <Text style={{fontSize:20, color:'white', textAlign:'center'}}>Find your perfect trip, designed by insiders who know and love their cities!</Text>
                 </View>
                 <Button style={styles.boton} mode="contained" color="blue" onPress={()=> props.navigation.navigate('home')}>Let's Go</Button>
             </ImageBackground>

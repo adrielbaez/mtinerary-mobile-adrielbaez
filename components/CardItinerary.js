@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/ItinerariesAction'
 import { faHeart, faMoneyBill, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { Button,TextInput } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 import globalStyles from '../styles/globalStyles'
-import { add } from 'react-native-reanimated';
 import Comments from './Comments';
+import Icon from 'react-native-vector-icons/Ionicons';
 const Itineraries = (props) => {
     const [view, setView] = useState({ show: false, textBtn: 'View More' })
     const [activities, setActivities] = useState([])
@@ -61,14 +61,15 @@ const Itineraries = (props) => {
                     <Text style={{ fontSize: 20 }}>{itinerary.authorName}</Text>
                 </View>
                 {/* precio y hora*/}
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Icon name="ios-book" size={30} color="#4F8EF7" />
+                <View style={{ flexDirection: 'row', alignItems: 'center',margin:10 }}>
                     <Text>Price:{new Array(itinerary.price).fill(0).map((elemento, index) => <FontAwesomeIcon key={index + 1} icon={faMoneyBill} style={styles.icon} />)}</Text>
                     <Text>Duration: {new Array(itinerary.duration).fill(0).map((elemento, index) => <FontAwesomeIcon key={index + 2} icon={faStopwatch} style={styles.icon} />)}</Text>
                 </View>
 
 
 
-                <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+                <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row', margin:10 }}>
 
                     {itinerary.usersLiked.includes(liked)
                         ? <FontAwesomeIcon icon={faHeart} style={styles.icon2} onPress={props.userLogged ? dislikes : null} />
@@ -84,46 +85,49 @@ const Itineraries = (props) => {
                 {/* hast */}
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
                     {itinerary.hashtags.map(hashtag => {
-                        return <Text key={hashtag}>{hashtag}</Text>
+                        return <Text style={{margin:5, fontWeight:'bold'}}  key={hashtag}>{hashtag}</Text>
                     })}
                 </View>
-                {view.show &&
-                    <View>
+                <View>
+                    {view.show &&
                         <View>
-                            <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10 }}>Activities</Text>
                             <View>
-                                {activities.length === 0
-                                    ? <ActivityIndicator size="large" color="black" />
-                                    : activities.map(activity => {
-                                        return (
-                                            <ImageBackground key={activity.title} source={{ uri: activity.image }} style={styles.imgActivity}>
-                                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 20, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10 }}>{activity.title}</Text>
-                                            </ImageBackground>
-                                        )
-                                    })
-                                }
-
-                            </View>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10 }}>Comments</Text>
-                            <View >
-                                <View >
-                                    {itinerary.comments.length === 0
-                                        ? <Text>no hay comment</Text>
-                                        : itinerary.comments.map((comment, index) => {
-                                            return <Comments key={index} comment={comment} userLogged={props.userLogged} idItinerary={itinerary._id} idCity={props.idCity} />
-                                        })                                      
+                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10 }}>Activities</Text>
+                                <View style={{ alignItems:'center'}}>
+                                    {activities.length === 0
+                                        ? <ActivityIndicator size="large" color="black" />
+                                        : activities.map(activity => {
+                                            return (
+                                                <ImageBackground key={activity.title} source={{ uri: activity.image }} style={styles.imgActivity}>
+                                                    <Text style={{ color: 'white', textAlign: 'center', fontSize: 20, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10 }}>{activity.title}</Text>
+                                                </ImageBackground>
+                                            )
+                                        })
                                     }
+
                                 </View>
-                                    <TextInput placeholder={!props.userLogged ? "You need to be logged to comment!" : "Write a comment..."} value={comment} disabled={!props.userLogged && true} onChangeText={(e) => setComment(e)} />
-                                    <Button mode="contained" color="blue" onPress={sendComment}>send</Button>
+                            </View>
+                            <View>
+                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10 }}>Comments</Text>
+                                <View >
+                                    <View style={{ width:'90%' }}>
+                                        {itinerary.comments.length === 0
+                                            ? <Text>no hay comment</Text>
+                                            : itinerary.comments.map((comment, index) => {
+                                                return <Comments key={index} comment={comment} userLogged={props.userLogged} idItinerary={itinerary._id} idCity={props.idCity} />
+                                            })
+                                        }
+                                    </View>
+                                    <View style={{margin:15}} >
+                                    <TextInput  placeholder={!props.userLogged ? "You need to be logged to comment!" : "Write a comment..."} value={comment} disabled={!props.userLogged && true} onChangeText={(e) => setComment(e)} />
+                                    <Button mode="contained" color="#E7B61B" disabled={props.userLogged ? false : true} onPress={sendComment}>send</Button>
+                                    </View>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                }
-                <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={changeStateBtn}>{view.textBtn}</Button>
-
+                    }
+                </View>
+                <Button style={globalStyles.botonesMedium} mode="contained" color="#E7B61B" onPress={changeStateBtn}>{view.textBtn}</Button>
             </View>
         </ScrollView>
     );
@@ -131,7 +135,7 @@ const Itineraries = (props) => {
 const styles = StyleSheet.create({
     cardItinerary: {
         alignItems: 'center',
-        backgroundColor: '#90ee90',
+        backgroundColor: '#0BC6C3',
         marginTop: 20,
         paddingTop: 10,
         paddingBottom: 10
@@ -155,7 +159,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     imgActivity: {
-        width: 350,
+        width: 380,
         height: 250,
         justifyContent: 'flex-end',
         marginTop: 15

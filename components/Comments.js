@@ -24,10 +24,11 @@ const Comment = ({ comment, userLogged, idItinerary,deleteCommentAction,updateCo
         deleteCommentAction(comment._id, idItinerary, userLogged.token)  
     }
     return (
-        <View>
-            <View >
-                <Text>foto</Text>
+        <View style={{flexDirection:'row', margin:10}}>
+            <View style={{marginRight:10}}>
+                <Image source={{uri: comment.userPicture}} style={{width:50, height:50, borderRadius:20}}/>
             </View>
+            <View style={{backgroundColor:'#F6F6F6', borderRadius:20, padding:10}}>
             {visible ?
                 <>
                     <View>
@@ -39,7 +40,7 @@ const Comment = ({ comment, userLogged, idItinerary,deleteCommentAction,updateCo
                     </View>
                 </>
                 : <View >
-                    <Text>{comment.firstName}</Text>
+                    <Text style={{color:'#00d4c5'}}>{comment.firstName}</Text>
                     <Text>{comment.comment}</Text>
                     {userLogged &&
                         userLogged.firstName === comment.firstName &&
@@ -50,6 +51,7 @@ const Comment = ({ comment, userLogged, idItinerary,deleteCommentAction,updateCo
                     }
                 </View>
             }
+            </View>
         </View>
     );
 }
