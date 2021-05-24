@@ -28,7 +28,10 @@ const SignIn = (props) => {
                 return false
             }
         }
-        Alert.alert('Hi' + 'welcome to MyTinerary! 🌎🌞')
+        Alert.alert(
+            `Hello `,
+            `Welcome to Mytinerary`
+        )
         props.navigation.navigate('home')
     }
     let image = { uri: 'https://i.imgur.com/2Xcbrak.jpg' }
@@ -43,7 +46,7 @@ const SignIn = (props) => {
                     </View>
                     <View style={[globalStyles.allScreem, { width: '90%', marginBottom:20 }]}>
                         <TextInput keyboardType="email-address" label="Your Mail" mode="outlined" value={userLogin.email} onChangeText={(e) => readInput(e, 'email')} />
-                        <TextInput keyboardType="email-address" label="Your Password" mode="outlined" secureTextEntry value={userLogin.password} onChangeText={(e) => readInput(e, 'password')} />
+                        <TextInput keyboardType="email-address" secureTextEntry label="Your Password" mode="outlined" secureTextEntry value={userLogin.password} onChangeText={(e) => readInput(e, 'password')} />
                     </View>
                     <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={sendDataUser} >Sign In</Button>
                     <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', width: '90%' }}>

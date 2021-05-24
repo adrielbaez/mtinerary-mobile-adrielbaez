@@ -36,9 +36,8 @@ const authActions = {
             }
         }
     },
-    cerrarSesion: (history) => {
+    cerrarSesion: () => {
         return (dispatch, getState) => {
-            alert('chau')
             dispatch({ type: 'LOGOUT_USER' })
 
         }

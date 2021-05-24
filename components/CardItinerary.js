@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { Button, TextInput } from 'react-native-paper';
 import globalStyles from '../styles/globalStyles'
 import Comments from './Comments';
+import ContentEmpty from '../components/ContentEmpty'
 import Icon from 'react-native-vector-icons/Ionicons';
 const Itineraries = (props) => {
     const [view, setView] = useState({ show: false, textBtn: 'View More' })
@@ -54,28 +55,33 @@ const Itineraries = (props) => {
         <ScrollView>
 
             <View key={itinerary._id} style={styles.cardItinerary}>
-                <Text style={{ fontSize: 25, textAlign: 'center' }}>{itinerary.title}</Text>
+                <Text style={{ fontSize: 40, color: 'white', fontWeight: 'bold', textAlign: 'center' }}>{itinerary.title}</Text>
                 {/* nombre y pic del autor */}
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Image source={{ uri: itinerary.authorPicture }} style={styles.authorPic}></Image>
-                    <Text style={{ fontSize: 20 }}>{itinerary.authorName}</Text>
+                    <Text style={{ fontSize: 25, fontWeight: 'bold' }}>{itinerary.authorName}</Text>
                 </View>
                 {/* precio y hora*/}
-                <Icon name="ios-book" size={30} color="#4F8EF7" />
-                <View style={{ flexDirection: 'row', alignItems: 'center',margin:10 }}>
-                    <Text>Price:{new Array(itinerary.price).fill(0).map((elemento, index) => <FontAwesomeIcon key={index + 1} icon={faMoneyBill} style={styles.icon} />)}</Text>
-                    <Text>Duration: {new Array(itinerary.duration).fill(0).map((elemento, index) => <FontAwesomeIcon key={index + 2} icon={faStopwatch} style={styles.icon} />)}</Text>
-                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', width: '90%' }}>
+                    <View style={{ width: '100%', margin: 10, flex: 1 }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Price:</Text>
+                            {new Array(itinerary.price).fill(0).map((elemento, index) => <FontAwesomeIcon size={30} key={index + 1} icon={faMoneyBill} style={[styles.icon, { margin: 5 }]} />)}
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Duration:</Text>
+                            {new Array(itinerary.duration).fill(0).map((elemento, index) => <FontAwesomeIcon size={30} key={index + 2} icon={faStopwatch} style={styles.iconReloj} />)}
+                        </View>
+                    </View>
 
+                    <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row', margin: 10 }}>
 
-
-                <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row', margin:10 }}>
-
-                    {itinerary.usersLiked.includes(liked)
-                        ? <FontAwesomeIcon icon={faHeart} style={styles.icon2} onPress={props.userLogged ? dislikes : null} />
-                        : <FontAwesomeIcon icon={faHeart} onPress={props.userLogged ? addLike : () => Alert.alert('no podes likear')} />
-                    }
-                    <Text>{itinerary.usersLiked.length}</Text>
+                        {itinerary.usersLiked.includes(liked)
+                            ? <FontAwesomeIcon size={60} icon={faHeart} style={styles.icon2} onPress={props.userLogged ? dislikes : null} />
+                            : <FontAwesomeIcon size={60} icon={faHeart} style={styles.icon3} onPress={props.userLogged ? addLike : () => Alert.alert('Likes', 'You have to be logged to like it')} />
+                        }
+                        <Text style={{ fontSize: 50 }}>{itinerary.usersLiked.length}</Text>
+                    </View>
                 </View>
 
 
@@ -85,15 +91,15 @@ const Itineraries = (props) => {
                 {/* hast */}
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
                     {itinerary.hashtags.map(hashtag => {
-                        return <Text style={{margin:5, fontWeight:'bold'}}  key={hashtag}>{hashtag}</Text>
+                        return <Text style={{ margin: 5, fontWeight: 'bold', fontSize: 15 }} key={hashtag}>{hashtag}</Text>
                     })}
                 </View>
-                <View>
+                <View >
                     {view.show &&
                         <View>
                             <View>
-                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10 }}>Activities</Text>
-                                <View style={{ alignItems:'center'}}>
+                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 40, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10 }}>Activities</Text>
+                                <View style={{ alignItems: 'center' }}>
                                     {activities.length === 0
                                         ? <ActivityIndicator size="large" color="black" />
                                         : activities.map(activity => {
@@ -108,26 +114,29 @@ const Itineraries = (props) => {
                                 </View>
                             </View>
                             <View>
-                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 25, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10 }}>Comments</Text>
+                                <Text style={{ color: 'white', textAlign: 'center', fontSize: 40, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10, marginTop: 20, marginBottom: 10 }}>Comments</Text>
                                 <View >
-                                    <View style={{ width:'90%' }}>
+                                    <View style={{ width: '80%' }}>
                                         {itinerary.comments.length === 0
-                                            ? <Text>no hay comment</Text>
+                                            ? <ContentEmpty texto={'Not comments Yet'} />
                                             : itinerary.comments.map((comment, index) => {
                                                 return <Comments key={index} comment={comment} userLogged={props.userLogged} idItinerary={itinerary._id} idCity={props.idCity} />
                                             })
                                         }
                                     </View>
-                                    <View style={{margin:15}} >
-                                    <TextInput  placeholder={!props.userLogged ? "You need to be logged to comment!" : "Write a comment..."} value={comment} disabled={!props.userLogged && true} onChangeText={(e) => setComment(e)} />
-                                    <Button mode="contained" color="#E7B61B" disabled={props.userLogged ? false : true} onPress={sendComment}>send</Button>
+                                    <View  >
+                                        <TextInput placeholder={!props.userLogged ? "You need to be logged to comment!" : "Write a comment..."} value={comment} disabled={!props.userLogged && true} onChangeText={(e) => setComment(e)} />
+                                        <Button mode="contained" color="#E7B61B" disabled={props.userLogged ? false : true} onPress={sendComment}>send</Button>
                                     </View>
                                 </View>
+                            </View>
+                            <View style={{ alignItems: 'center', }}>
+                            <Button style={globalStyles.botonesMedium} mode="contained" color="#E7B61B" onPress={changeStateBtn}>{view.textBtn}</Button>
                             </View>
                         </View>
                     }
                 </View>
-                <Button style={globalStyles.botonesMedium} mode="contained" color="#E7B61B" onPress={changeStateBtn}>{view.textBtn}</Button>
+                    {!view.show && <Button style={globalStyles.botonesMedium} mode="contained" color="#E7B61B" onPress={changeStateBtn}>{view.textBtn}</Button>}
             </View>
         </ScrollView>
     );
@@ -169,6 +178,13 @@ const styles = StyleSheet.create({
     },
     icon2: {
         color: 'red',
+    },
+    icon3: {
+        opacity: 0.7,
+        marginRight: 8
+    },
+    iconReloj: {
+        color: 'black'
     }
 })
 const mapStateToProps = (state) => {

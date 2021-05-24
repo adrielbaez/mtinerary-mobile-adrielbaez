@@ -1,6 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
+import authActions from '../redux/actions/authActions'
+import { StyleSheet, Text, View, Image, ImageBackground, ScrollView, Alert } from 'react-native';
 import { Button, FAB, Portal } from 'react-native-paper';
 import globalStyles from '../styles/globalStyles'
 const Home = (props) => {
@@ -41,9 +43,22 @@ const Home = (props) => {
     const [state, setState] = React.useState({ open: false });
 
     const onStateChange = ({ open }) => setState({ open });
-
+    const logOut =()=>{
+        props.cerrarSesion('home')
+        props.navigation.navigate('home')
+    }
+    const alertLogOut= ()=>{
+        Alert.alert(
+            "Log Out",
+            `Are you sure you want to go out??`,
+            [
+                {text: 'YES', onPress: logOut},
+                {text: 'NO'}
+            ]
+        )
+    }
     const { open } = state;
-
+    let fabMenu= props.userLogged ? ({icon: 'star',label:  'Log Out',onPress: alertLogOut }) :({icon: 'star',label: 'Sign Up',onPress: () => props.navigation.navigate('signUp'),},{icon: 'email',label: 'Sign In',onPress: () => props.navigation.navigate('signIn'),})
     return (
         <>
             <ScrollView>
@@ -97,16 +112,6 @@ const Home = (props) => {
                         icon={open ? 'calendar-today' : 'plus'}
                         actions={[
                             {
-                                icon: 'star',
-                                label: 'Sign Up',
-                                onPress: () => props.navigation.navigate('signUp'),
-                            },
-                            {
-                                icon: 'email',
-                                label: 'Sign In',
-                                onPress: () => props.navigation.navigate('signIn'),
-                            },
-                            {
                                 icon: 'bell',
                                 label: 'Cities',
                                 onPress: () => props.navigation.navigate('cities'),
@@ -116,7 +121,8 @@ const Home = (props) => {
                                 icon: 'star',
                                 label: 'Home',
                                 onPress: () => props.navigation.navigate('home'),
-                            }
+                            },
+                            fabMenu
                         ]}
                         onStateChange={onStateChange}
                         onPress={() => {
@@ -159,4 +165,13 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     }
 })
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        userLogged: state.authReducer.userLogged
+    }
+}
+const mapDispatchToProps = {
+    cerrarSesion: authActions.cerrarSesion
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -21,8 +21,8 @@ const globalStyles = StyleSheet.create({
     botonesMedium:{
         width: 200,
         borderRadius: 50,
-        marginTop: 10,
-        marginBottom: 30,
+        marginTop: 15,
+        marginBottom: 15,
     },
     centrarContent:{
         justifyContent:'center',
@@ -55,6 +55,11 @@ const globalStyles = StyleSheet.create({
         height:'100%',
         justifyContent:'center',
     },
+    picker:{
+        backgroundColor: '#d6d5d5',
+        textAlign:'center',
+        margin:10
+    }
 
 });
 
