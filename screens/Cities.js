@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { Avatar, Button, Card, Title, Paragraph,TextInput } from 'react-native-paper';
 import axios from 'axios';
+import ItinerariesEmpty from '../components/ItinerariesEmpty';
 const Cities = (props) => {
     useEffect(() => {
         props.loadCities()
@@ -19,7 +20,7 @@ const Cities = (props) => {
             {props.loading
                 ? <ActivityIndicator size="large" color="black" />
                 : props.newCities.length === 0
-                    ? <Text>no hay Cities</Text>
+                    ? <ItinerariesEmpty />
                     : props.newCities.map(city => {
                         return (
                                 <Card key={city._id} style={{backgroundColor:'#0BC6C3', margin:10}}>
