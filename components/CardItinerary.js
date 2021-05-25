@@ -116,13 +116,16 @@ const Itineraries = (props) => {
                             <View>
                                 <Text style={{ color: 'white', textAlign: 'center', fontSize: 40, backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10, marginTop: 20, marginBottom: 10 }}>Comments</Text>
                                 <View >
-                                    <View style={{ width: '80%' }}>
+                                    <View style={{ width: '100%', maxHeight:500, overflow:'scroll' }}>
+                                        <ScrollView>
+
                                         {itinerary.comments.length === 0
                                             ? <ContentEmpty texto={'Not comments Yet'} />
                                             : itinerary.comments.map((comment, index) => {
                                                 return <Comments key={index} comment={comment} userLogged={props.userLogged} idItinerary={itinerary._id} idCity={props.idCity} />
                                             })
                                         }
+                                        </ScrollView>
                                     </View>
                                     <View  >
                                         <TextInput placeholder={!props.userLogged ? "You need to be logged to comment!" : "Write a comment..."} value={comment} disabled={!props.userLogged && true} onChangeText={(e) => setComment(e)} />
@@ -138,6 +141,7 @@ const Itineraries = (props) => {
                 </View>
                     {!view.show && <Button style={globalStyles.botonesMedium} dark={true} mode="contained" color="#E7B61B" onPress={changeStateBtn}>{view.textBtn}</Button>}
             </View>
+            
         </ScrollView>
     );
 }
@@ -146,6 +150,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#0BC6C3',
         marginTop: 20,
+        marginBottom:20,
         paddingTop: 10,
         paddingBottom: 10
     },

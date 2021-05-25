@@ -8,12 +8,12 @@ const Welcome = (props) => {
     return ( 
         <>
             <ImageBackground source={image} style={styles.containertHero}>
-                {/* <Image source={imageLogo} style={styles.logo}></Image> */}
+                <Image source={imageLogo} style={styles.logo}></Image>
                 {/* <View style={styles.textContent}>
                     <Text style={styles.title}>MyTinerary</Text>
                     <Text style={{fontSize:20, color:'white', textAlign:'center'}}>Find your perfect trip, designed by insiders who know and love their cities!</Text>
                 </View> */}
-                <Button style={styles.boton} dark={true} mode="contained" color="#0BC6C3" onPress={()=> props.navigation.navigate('home')}>Get Started</Button> 
+                <Button style={styles.boton} dark={true} mode="contained" color="#E7B61B" onPress={()=> props.navigation.navigate('home')}>Get Started</Button> 
             </ImageBackground>
         </>
      );
@@ -22,16 +22,17 @@ const styles = StyleSheet.create({
     containertHero: {
       height: '100%',
       alignItems:'center',
-      justifyContent: 'space-around'
+      justifyContent: 'flex-end'
     },
     logo:{
-        width: 300,
-        height: 300,
+        width: 250,
+        height: 250,
     },
     boton:{
         width: 200,
         borderRadius: 50,
-        marginTop: 350,
+        marginTop: 80,
+        marginBottom: 150,
         padding:10
         // marginBottom: 50,
     },

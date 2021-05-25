@@ -24,10 +24,9 @@ const SignIn = (props) => {
             Alert.alert('Fields','All fields are required')
             return false;
         }
-        setErrores({ firstName: '', lastName: '', email: '', password: '', userPicture: '' })
         let response = await props.createNewUser({ ...newUser, firstName: newUser.firstName.trim(), lastName: newUser.lastName.trim() })
         if (response) {
-            console.log(response)
+            setErrores({ firstName: '', lastName: '', email: '', password: '', userPicture: '' })
             if (!response.success) {
                 response.details.map(error => {
                     return setErrores((erroresAnteriores) => {
@@ -53,15 +52,15 @@ const SignIn = (props) => {
                             <Text style={{ fontSize: 30, color: 'black', textAlign: 'center' }}>Mytinerary</Text>
                         </View>
                         <TextInput theme={{colors:{primary:'#0BC6C3'}}} label="First Name" mode="outlined" value={newUser.firstName} onChangeText={(e) => readInput(e, 'firstName')} />
-                        {errores.firstName !== '' ? (<Text style={globalStyles.messageError}>{errores.lastName}</Text>) : null}
+                        {errores.firstName !== '' ? (<Text style={globalStyles.messageError}>{errores.firstName}</Text>) : null}
                         <TextInput theme={{colors:{primary:'#0BC6C3'}}} label="Last Name" mode="outlined" value={newUser.lastName} onChangeText={(e) => readInput(e, 'lastName')} />
                         {errores.lastName !== '' ? (<Text style={globalStyles.messageError}>{errores.lastName}</Text>) : null}
                         <TextInput theme={{colors:{primary:'#0BC6C3'}}} label="Your Mail" mode="outlined" value={newUser.email} onChangeText={(e) => readInput(e, 'email')} />
-                        {errores.email !== '' ? (<Text style={globalStyles.messageError}>{errores.lastName}</Text>) : null}
+                        {errores.email !== '' ? (<Text style={globalStyles.messageError}>{errores.email}</Text>) : null}
                         <TextInput theme={{colors:{primary:'#0BC6C3'}}} label="Your Password" mode="outlined" secureTextEntry value={newUser.password} onChangeText={(e) => readInput(e, 'password')} />
-                        {errores.password !== '' ? (<Text style={globalStyles.messageError}>{errores.lastName}</Text>) : null}
+                        {errores.password !== '' ? (<Text style={globalStyles.messageError}>{errores.password}</Text>) : null}
                         <TextInput theme={{colors:{primary:'#0BC6C3'}}} label="Your Picture Profile" mode="outlined" value={newUser.userPicture} onChangeText={(e) => readInput(e, 'userPicture')} />
-                        {errores.userPicture !== '' ? (<Text style={globalStyles.messageError}>{errores.lastName}</Text>) : null}
+                        {errores.userPicture !== '' ? (<Text style={globalStyles.messageError}>{errores.userPicture}</Text>) : null}
                         <View style={{ alignItems: 'center' }}>
                             <SelectPicker 
                             style={globalStyles.picker}

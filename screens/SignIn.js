@@ -8,6 +8,7 @@ import authActions from '../redux/actions/authActions'
 const SignIn = (props) => {
 
     const [userLogin, setUserLogin] = useState({ email: '', password: '' })
+    const [mensajeError, setMensajeError] = useState({ success: false, mensaje: '' })
     const readInput = (e, field) => {
         setUserLogin({
             ...userLogin,
@@ -44,6 +45,11 @@ const SignIn = (props) => {
                     <View style={{ padding: 10 }}>
                         <Text style={{ fontSize: 30, color: 'black', textAlign: 'center' }}>Mytinerary</Text>
                     </View>
+                    {mensajeError.success
+                        ? (
+                            <Text style={globalStyles.messageError}>{mensajeError.mensaje}</Text>
+                        )
+                        : null}
                     <View style={[globalStyles.allScreem, { width: '90%', marginBottom:20 }]}>
                         <TextInput theme={{colors:{primary:'#0BC6C3'}}} label="Your Mail" mode="outlined" value={userLogin.email} onChangeText={(e) => readInput(e, 'email')} />
                         <TextInput theme={{colors:{primary:'#0BC6C3'}}} secureTextEntry  label="Your Password" mode="outlined"  value={userLogin.password} onChangeText={(e) => readInput(e, 'password')} />

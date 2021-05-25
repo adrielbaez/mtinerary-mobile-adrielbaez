@@ -58,7 +58,7 @@ const Home = (props) => {
         )
     }
     const { open } = state;
-    let fabMenu = props.userLogged ? ({ icon: 'logout', label: 'Log Out', onPress: alertLogOut }) : ({ icon: 'star', label: 'Sign Up', onPress: () => props.navigation.navigate('signUp'), }, { icon: 'tooltip-account', label: 'Sign', onPress: () => props.navigation.navigate('signIn'), })
+    // let fabMenu = 
     return (
         <>
             <ScrollView>
@@ -81,7 +81,7 @@ const Home = (props) => {
                     </ImageBackground>
                 </View>
                 <View style={styles.containertHero}>
-                    <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center' }}>These are some of the wonders that await you</Text>
+                    <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center',  marginTop:45}}>These are some of the wonders that await you</Text>
                     <View style={{ width: '100%', height: 500 }}>
                         <View style={{ flex: 1, flexDirection: 'row' }}>
                             <ImageBackground source={{ uri: 'https://i.imgur.com/rZe2XZG.jpg' }} style={{ flex: 2, margin: 5 }}>
@@ -127,9 +127,9 @@ const Home = (props) => {
                         })} */}
                     </ScrollView>
                     <View style={{ marginTop: 40 }}>
-                        <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Want to know more about cities?</Text>
+                        <Text style={{ fontSize: 20, color: 'black', textAlign: 'center' }}>Want to know more about cities?</Text>
                     </View>
-                    <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={() => props.navigation.navigate('cities')}>Go to Cities</Button>
+                    <Button style={globalStyles.botonesMedium} mode="contained" dark={true} color="#E7B61B" onPress={() => props.navigation.navigate('cities')}>Go to Cities</Button>
 
 
                 </View>
@@ -141,6 +141,7 @@ const Home = (props) => {
                             {
                                 icon: 'home',
                                 label: 'Home',
+                                small: false,
                                 onPress: () => props.navigation.navigate('home'),
                             },
                             {
@@ -150,7 +151,8 @@ const Home = (props) => {
                                 small: false,
                             },
 
-                            fabMenu
+                            props.userLogged ? ({ icon: 'logout', label: 'Log Out', onPress: alertLogOut }) : ({ icon: 'tooltip-account', label: 'Sign', onPress: () => props.navigation.navigate('signIn'), })
+                            
                         ]}
                         onStateChange={onStateChange}
                         onPress={() => {

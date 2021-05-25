@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/ItinerariesAction'
 import CardItinerary from '../components/CardItinerary';
 import ItinerariesEmpty from '../components/ItinerariesEmpty';
+import { Button } from 'react-native-paper';
+import globalStyles from '../styles/globalStyles'
 const Itineraries = (props) => {
     const [city, setCity] = useState({})
-    const [view, setView] = useState({show: false, textBtn: 'View More'})
+    const [view, setView] = useState({ show: false, textBtn: 'View More' })
     useEffect(() => {
         let cityDetails = props.cities.find(city => city._id === props.route.params.idCity)
         setCity(cityDetails)
@@ -22,12 +24,16 @@ const Itineraries = (props) => {
             <Text style={{ marginTop: 20, fontSize: 30, color: 'black', textAlign: 'center' }}>{`Available Itineraries for ${city.city}`}</Text>
             {/* nombre itinerario */}
             {props.itineraries.length === 0
-                ? <ItinerariesEmpty imagen={'https://i.imgur.com/PyTLbLP.jpg'} texto="We don't have itineraries for" city={city.city}/>
+                ? <ItinerariesEmpty imagen={'https://i.imgur.com/PyTLbLP.jpg'} texto="We don't have itineraries for" city={city.city} />
                 : props.itineraries.map(itinerary => {
-                    return (<CardItinerary key={itinerary._id} itinerary={itinerary} idCity={props.route.params.idCity}/>)
+                    return (<CardItinerary key={itinerary._id} itinerary={itinerary} idCity={props.route.params.idCity} />)
                 })
 
             }
+            <View style={{alignItems:'center', width:'100%'}}>
+                <Button style={globalStyles.botonesMedium} mode="contained" dark={true} color="#E7B61B" onPress={() => props.navigation.navigate('cities')}>Go Back To Cities</Button>
+
+            </View>
         </ScrollView>
     );
 }
