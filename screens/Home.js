@@ -62,19 +62,37 @@ const Home = (props) => {
     return (
         <>
             <ScrollView>
-                <View style={styles.containertHero}>
-                        {/* <Text style={{ fontSize: 30, color: 'white', textAlign: 'center' }}>Some of the most visited cities in the world</Text> */}
-                    <View style={{width:'100%', height:500}}>
-                        <View style={{flex:1, flexDirection:'row'}}>
-                        <ImageBackground source={{ uri: 'https://i.imgur.com/rZe2XZG.jpg' }} style={{ flex: 2, margin:5 }}>
-                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Triumphal Arch</Text>
-                                </ImageBackground>
-                                <ImageBackground source={{ uri: 'https://i.imgur.com/hSHbYbv.jpg' }} style={{ flex: 1, margin:5 }}>
-                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Liberty Statue</Text>
-                                </ImageBackground>
+
+                <View style={{ flex: 1 }}>
+                    <ImageBackground source={{ uri: 'https://i.imgur.com/J3NSnvz.jpg' }} style={{ width: '100%', height: 400, justifyContent:'center'}}>
+                        <View>
+                            <View style={{ width:200,padding: 10, backgroundColor:'white', justifyContent:'center', margin: 5  }}>
+                                <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center' }}>Welcome</Text>
+                            </View>
+                            {props.userLogged ?
+                                (<View style={{ width:200,padding: 10, backgroundColor:'white', justifyContent:'center', margin: 5  }}>
+                                <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center' }}>{props.userLogged.firstName}</Text>
+                            </View>)
+                            : null}
+                            <View style={{ width:250,padding: 10, backgroundColor:'white', justifyContent:'center', margin: 5  }}>
+                                <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center' }}>To Mytinerary</Text>
+                            </View>
                         </View>
-                        <ImageBackground source={{uri:'https://i.imgur.com/ozupj7K.jpg'}} style={{flex:1, margin:5}}>
-                        <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Central Station</Text>
+                    </ImageBackground>
+                </View>
+                <View style={styles.containertHero}>
+                    <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold', textAlign: 'center' }}>These are some of the wonders that await you</Text>
+                    <View style={{ width: '100%', height: 500 }}>
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <ImageBackground source={{ uri: 'https://i.imgur.com/rZe2XZG.jpg' }} style={{ flex: 2, margin: 5 }}>
+                                <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Triumphal Arch</Text>
+                            </ImageBackground>
+                            <ImageBackground source={{ uri: 'https://i.imgur.com/hSHbYbv.jpg' }} style={{ flex: 1, margin: 5 }}>
+                                <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Liberty Statue</Text>
+                            </ImageBackground>
+                        </View>
+                        <ImageBackground source={{ uri: 'https://i.imgur.com/ozupj7K.jpg' }} style={{ flex: 1, margin: 5 }}>
+                            <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Central Station</Text>
                         </ImageBackground>
                     </View>
                     <ScrollView  >
@@ -96,7 +114,7 @@ const Home = (props) => {
                                 </ImageBackground>
                                 <ImageBackground source={{ uri: 'https://i.imgur.com/uOEEBiK.jpg' }} style={{ margin: 5, flex: 2 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Beacon of the End of The World</Text></ImageBackground>
                             </View>
-                            <ImageBackground source={{ uri: 'https://i.imgur.com/cmziMvF.jpg'}} style={{ margin: 5, flex: 1 }}>
+                            <ImageBackground source={{ uri: 'https://i.imgur.com/cmziMvF.jpg' }} style={{ margin: 5, flex: 1 }}>
                                 <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Grand Canyon</Text>
                             </ImageBackground>
                         </View>
@@ -131,7 +149,7 @@ const Home = (props) => {
                                 onPress: () => props.navigation.navigate('cities'),
                                 small: false,
                             },
-                           
+
                             fabMenu
                         ]}
                         onStateChange={onStateChange}

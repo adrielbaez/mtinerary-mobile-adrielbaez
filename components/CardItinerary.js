@@ -131,12 +131,12 @@ const Itineraries = (props) => {
                                 </View>
                             </View>
                             <View style={{ alignItems: 'center', }}>
-                            <Button style={globalStyles.botonesMedium} mode="contained" color="#E7B61B" onPress={changeStateBtn}>{view.textBtn}</Button>
+                            <Button style={globalStyles.botonesMedium} dark={true} mode="contained" color="#E7B61B" onPress={changeStateBtn}>{view.textBtn}</Button>
                             </View>
                         </View>
                     }
                 </View>
-                    {!view.show && <Button style={globalStyles.botonesMedium} mode="contained" color="#E7B61B" onPress={changeStateBtn}>{view.textBtn}</Button>}
+                    {!view.show && <Button style={globalStyles.botonesMedium} dark={true} mode="contained" color="#E7B61B" onPress={changeStateBtn}>{view.textBtn}</Button>}
             </View>
         </ScrollView>
     );

@@ -19,7 +19,7 @@ const Itineraries = (props) => {
             <ImageBackground source={{ uri: city.src }} style={{ height: 300 }}>
                 <Text style={{ textAlign: 'center', backgroundColor: 'rgba(0, 0, 0, 0.2)', borderRadius: 40, padding: 10, fontSize: 45, fontWeight: 'bold', color: 'white' }}>{city.city}</Text>
             </ImageBackground>
-            <Text style={{ marginTop: 20, fontSize: 20, color: 'black', textAlign: 'center' }}>Take a small break for coffee and enjoy</Text>
+            <Text style={{ marginTop: 20, fontSize: 30, color: 'black', textAlign: 'center' }}>{`Available Itineraries for ${city.city}`}</Text>
             {/* nombre itinerario */}
             {props.itineraries.length === 0
                 ? <ItinerariesEmpty imagen={'https://i.imgur.com/PyTLbLP.jpg'} texto="We don't have itineraries for" city={city.city}/>

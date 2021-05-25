@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'react-native';
 import { Button} from 'react-native-paper';
 const Welcome = (props) => {
-    const image = { uri: 'https://i.imgur.com/CSbOBmJ.jpg' }
+    const image = { uri: 'https://i.imgur.com/9kKQDM7.jpg' }
     const imageLogo = { uri: 'https://i.imgur.com/Dq3x1hl.png' }
     return ( 
         <>
@@ -13,7 +13,7 @@ const Welcome = (props) => {
                     <Text style={styles.title}>MyTinerary</Text>
                     <Text style={{fontSize:20, color:'white', textAlign:'center'}}>Find your perfect trip, designed by insiders who know and love their cities!</Text>
                 </View> */}
-                <Button style={styles.boton} mode="contained" color="#0BC6C3" onPress={()=> props.navigation.navigate('home')}>Get Started</Button> 
+                <Button style={styles.boton} dark={true} mode="contained" color="#0BC6C3" onPress={()=> props.navigation.navigate('home')}>Get Started</Button> 
             </ImageBackground>
         </>
      );

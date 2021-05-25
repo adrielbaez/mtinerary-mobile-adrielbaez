@@ -15,7 +15,7 @@ const Cities = (props) => {
         <ScrollView>
             {/* <Text style={{ fontSize: 40, fontWeight: 'bold', textAlign: 'center' }}>Cities</Text> */}
             <View style={{margin:10}}>
-            <TextInput mode="flat" selectionColor="black" underlineColor="#0BC6C3" style={styles.input}  placeholder="Searh Cities" keyboardType="name-phone-pad" onChangeText={(e) => props.searchCities(e)} />
+            <TextInput theme={{colors:{primary:'#0BC6C3'}}} mode="flat" selectionColor="black" underlineColor="#0BC6C3" style={styles.input}  placeholder="Searh Cities" keyboardType="name-phone-pad" onChangeText={(e) => props.searchCities(e)} />
             </View>
             {props.loading
                 ? <ActivityIndicator size="large" color="black" />
