@@ -18,7 +18,7 @@ const SignIn = (props) => {
         e.preventDefault()
         if (Object.values(userLogin).some(valor => valor === "")) {
             // setMensajeError({ success: true, mensaje: 'All fields are required' })
-            Alert.alert('All field are required')
+            Alert.alert('Fields','All fields are required')
             return false;
         }
         let response = await props.iniciarSesion(userLogin)
@@ -29,7 +29,7 @@ const SignIn = (props) => {
             }
         }
         Alert.alert(
-            `Hello `,
+            `Hello`,
             `Welcome to Mytinerary`
         )
         props.navigation.navigate('home')
@@ -46,12 +46,12 @@ const SignIn = (props) => {
                     </View>
                     <View style={[globalStyles.allScreem, { width: '90%', marginBottom:20 }]}>
                         <TextInput keyboardType="email-address" label="Your Mail" mode="outlined" value={userLogin.email} onChangeText={(e) => readInput(e, 'email')} />
-                        <TextInput keyboardType="email-address" secureTextEntry label="Your Password" mode="outlined" secureTextEntry value={userLogin.password} onChangeText={(e) => readInput(e, 'password')} />
+                        <TextInput keyboardType="email-address"  label="Your Password" mode="outlined"  value={userLogin.password} onChangeText={(e) => readInput(e, 'password')} secureTextEntry />
                     </View>
-                    <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={sendDataUser} >Sign In</Button>
+                    <Button style={globalStyles.botonesMedium} mode="contained" color="#E7B61B" onPress={sendDataUser} >Sign In</Button>
                     <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', width: '90%' }}>
                         <Text style={{ fontSize: 15, color: 'black', textAlign: 'center' }}>Don’t you have an account at Mytinerary?</Text>
-                        <Button style={globalStyles.botonesMedium} color="blue" onPress={() => props.navigation.navigate('signUp')} >Create Account</Button>
+                        <Button style={globalStyles.botonesMedium} color="#0BC6C3" onPress={() => props.navigation.navigate('signUp')} >Create Account</Button>
                     </View>
                 </View>
             </View>

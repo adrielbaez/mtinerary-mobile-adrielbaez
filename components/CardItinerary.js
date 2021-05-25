@@ -65,12 +65,12 @@ const Itineraries = (props) => {
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', width: '90%' }}>
                     <View style={{ width: '100%', margin: 10, flex: 1 }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Price:</Text>
-                            {new Array(itinerary.price).fill(0).map((elemento, index) => <FontAwesomeIcon size={30} key={index + 1} icon={faMoneyBill} style={[styles.icon, { margin: 5 }]} />)}
+                            <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Price:</Text>
+                            {new Array(itinerary.price).fill(0).map((elemento, index) => <FontAwesomeIcon size={25} key={index + 1} icon={faMoneyBill} style={[styles.icon, { margin: 5 }]} />)}
                         </View>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Duration:</Text>
-                            {new Array(itinerary.duration).fill(0).map((elemento, index) => <FontAwesomeIcon size={30} key={index + 2} icon={faStopwatch} style={styles.iconReloj} />)}
+                            <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Duration:</Text>
+                            {new Array(itinerary.duration).fill(0).map((elemento, index) => <FontAwesomeIcon size={25} key={index + 2} icon={faStopwatch} style={styles.iconReloj} />)}
                         </View>
                     </View>
 

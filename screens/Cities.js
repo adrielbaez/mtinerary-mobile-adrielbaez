@@ -20,7 +20,7 @@ const Cities = (props) => {
             {props.loading
                 ? <ActivityIndicator size="large" color="black" />
                 : props.newCities.length === 0
-                    ? <ItinerariesEmpty />
+                    ? <ItinerariesEmpty texto={"We can't find the city...Try another one!"} imagen={'https://i.imgur.com/GdDs1sY.jpg'} />
                     : props.newCities.map(city => {
                         return (
                                 <Card key={city._id} style={{backgroundColor:'#0BC6C3', margin:10}}>

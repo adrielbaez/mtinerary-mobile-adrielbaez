@@ -10,21 +10,21 @@ import SignIn from '../screens/SignIn'
 import SignUp from '../screens/SignUp'
 import Itineraries from '../screens/Itineraries'
 import UserLogged from '../components/UserLogged';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Stack = (props) => {
   const stack = createStackNavigator()
   const {DefaultTheme}=props
-  console.log(DefaultTheme);
+  
   const theme = {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
       primary: '#0BC6C3',
-      accent: '#0655BF'
+      accent: '#0655BF',
+      background: '#0094ef',
     }
   }
+  console.log(theme);
   let headerUserModify = () => <UserLogged userPicture={!props.userLogged ? 'https://i.imgur.com/Wkk311i.png' : props.userLogged.userPicture} />
   return (
     <stack.Navigator screenOptions={{

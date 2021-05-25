@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Image, ImageBackground, ScrollView } from 'reac
 import { connect } from 'react-redux';
 import itinerariesActions from '../redux/actions/ItinerariesAction'
 import CardItinerary from '../components/CardItinerary';
+import ItinerariesEmpty from '../components/ItinerariesEmpty';
 const Itineraries = (props) => {
     const [city, setCity] = useState({})
     const [view, setView] = useState({show: false, textBtn: 'View More'})
@@ -12,21 +13,7 @@ const Itineraries = (props) => {
         setCity(cityDetails)
         props.loadItineraries(props.route.params.idCity, null)
     }, [])
-    let image = { uri: 'https://i.imgur.com/rhoB36c.jpg' }
-    const changeStateBtn = ()=>{
-        if (view.show) {
-            setView({
-                show: !view.show,
-                textBtn: 'View More'
-            })
-            return false
-        }
-        setView({
-            show: !view.show,
-            textBtn: 'View Less'
-        })
-    }
-    console.log(props.itineraries[1]);
+
     return (
         <ScrollView>
             <ImageBackground source={{ uri: city.src }} style={{ height: 300 }}>
@@ -35,7 +22,7 @@ const Itineraries = (props) => {
             <Text style={{ marginTop: 20, fontSize: 20, color: 'black', textAlign: 'center' }}>Take a small break for coffee and enjoy</Text>
             {/* nombre itinerario */}
             {props.itineraries.length === 0
-                ? <Text>No hay itinerarios</Text>
+                ? <ItinerariesEmpty imagen={'https://i.imgur.com/PyTLbLP.jpg'} texto="We don't have itineraries for" city={city.city}/>
                 : props.itineraries.map(itinerary => {
                     return (<CardItinerary key={itinerary._id} itinerary={itinerary} idCity={props.route.params.idCity}/>)
                 })

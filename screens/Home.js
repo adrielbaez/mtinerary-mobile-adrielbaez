@@ -43,48 +43,56 @@ const Home = (props) => {
     const [state, setState] = React.useState({ open: false });
 
     const onStateChange = ({ open }) => setState({ open });
-    const logOut =()=>{
+    const logOut = () => {
         props.cerrarSesion('home')
         props.navigation.navigate('home')
     }
-    const alertLogOut= ()=>{
+    const alertLogOut = () => {
         Alert.alert(
             "Log Out",
             `Are you sure you want to go out??`,
             [
-                {text: 'YES', onPress: logOut},
-                {text: 'NO'}
+                { text: 'YES', onPress: logOut },
+                { text: 'NO' }
             ]
         )
     }
     const { open } = state;
-    let fabMenu= props.userLogged ? ({icon: 'star',label:  'Log Out',onPress: alertLogOut }) :({icon: 'star',label: 'Sign Up',onPress: () => props.navigation.navigate('signUp'),},{icon: 'email',label: 'Sign In',onPress: () => props.navigation.navigate('signIn'),})
+    let fabMenu = props.userLogged ? ({ icon: 'star', label: 'Log Out', onPress: alertLogOut }) : ({ icon: 'star', label: 'Sign In', onPress: () => props.navigation.navigate('signIn'), }, { icon: 'email', label: 'Sign', onPress: () => props.navigation.navigate('signUp'), })
     return (
         <>
             <ScrollView>
                 <View style={styles.containertHero}>
+                    {props.userLogged
+                        ? (<View>
+                            <Image source={{ uri: props.userLogged.userPicture }} style={{ width: 150, height: 150 }} />
+                            <View>
+                                <Text>{props.userLogged.firstName}</Text>
+                            </View>
+                        </View>)
+                        : null
+                    }
                     <View style={styles.welcome}>
-                        <Text style={{ fontSize: 40, color: 'white', textAlign: 'center' }}>MyTinerary</Text>
-                        <Text style={{ fontSize: 20, color: 'white', textAlign: 'center' }}>Take a small break for coffee and enjoy</Text>
+                        <Text style={{ fontSize: 30, color: 'white', textAlign: 'center' }}>Some of the most visited cities in the world</Text>
                     </View>
                     <ScrollView  >
-                        <View style={{ width: 400, height: 300, flexDirection: 'row' }}>
+                        <View style={{ width: 400, height: 500, flexDirection: 'row' }}>
                             <ImageBackground source={{ uri: cities[0].src }} style={{ margin: 5, flex: 1 }}>
                                 <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[0].header}</Text>
                             </ImageBackground>
                             <View style={{ flex: 1 }}>
-                                <ImageBackground source={{ uri: cities[1].src }} style={{ margin: 5, flex: 1 }}>
+                                <ImageBackground source={{ uri: cities[1].src }} style={{ margin: 5, flex: 2 }}>
                                     <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[1].header}</Text>
                                 </ImageBackground>
-                                <ImageBackground source={{ uri: cities[2].src }} style={{ margin: 5, flex: 1 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[2].header}</Text></ImageBackground>
+                                <ImageBackground source={{ uri: cities[2].src }} style={{ margin: 5, flex: 3 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[2].header}</Text></ImageBackground>
                             </View>
                         </View>
-                        <View style={{ width: 400, height: 300, flexDirection: 'row' }}>
+                        <View style={{ width: 400, height: 500, flexDirection: 'row' }}>
                             <View style={{ flex: 1 }}>
-                                <ImageBackground source={{ uri: cities[3].src }} style={{ margin: 5, flex: 1 }}>
+                                <ImageBackground source={{ uri: cities[3].src }} style={{ margin: 5, flex: 3 }}>
                                     <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[3].header}</Text>
                                 </ImageBackground>
-                                <ImageBackground source={{ uri: cities[4].src }} style={{ margin: 5, flex: 1 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[4].header}</Text></ImageBackground>
+                                <ImageBackground source={{ uri: cities[4].src }} style={{ margin: 5, flex: 2 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[4].header}</Text></ImageBackground>
                             </View>
                             <ImageBackground source={{ uri: cities[5].src }} style={{ margin: 5, flex: 1 }}>
                                 <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[5].header}</Text>
@@ -107,7 +115,7 @@ const Home = (props) => {
                 </View>
                 <Portal>
                     <FAB.Group
-                    color="blue"
+                        color="blue"
                         open={open}
                         icon={open ? 'calendar-today' : 'plus'}
                         actions={[
@@ -145,7 +153,7 @@ const styles = StyleSheet.create({
     },
     containertHero: {
         alignItems: 'center',
-        backgroundColor: '#E7B61B'
+        // backgroundColor: '#E7B61B'
     },
     cityImage: {
         width: 300,

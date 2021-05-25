@@ -21,7 +21,7 @@ const SignIn = (props) => {
         e.preventDefault()
         if (Object.values(newUser).some(valor => valor === "")) {
             // setMensajeError({ success: true, mensaje: 'All fields are required' })
-            Alert.alert('All field are required')
+            Alert.alert('Fields','All fields are required')
             return false;
         }
         setErrores({ firstName: '', lastName: '', email: '', password: '', userPicture: '' })
@@ -79,10 +79,10 @@ const SignIn = (props) => {
                             </SelectPicker>
                         </View>
                     </View>
-                    <Button style={globalStyles.botonesMedium} mode="contained" color="blue" onPress={sendDataUser} >Sign Up</Button>
+                    <Button style={globalStyles.botonesMedium} mode="contained" color="#E7B61B" onPress={sendDataUser} >Sign Up</Button>
                     <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', width: '90%' }}>
                         <Text style={{ fontSize: 15, color: 'black', textAlign: 'center' }}>Do you have an account at Mytinerary?</Text>
-                        <Button style={globalStyles.botonesMedium} color="blue" onPress={() => props.navigation.navigate('signIn')} >Sign In</Button>
+                        <Button style={globalStyles.botonesMedium} color="#0BC6C3" onPress={() => props.navigation.navigate('signIn')} >Sign In</Button>
                     </View>
                 </View>
 
