@@ -63,39 +63,41 @@ const Home = (props) => {
         <>
             <ScrollView>
                 <View style={styles.containertHero}>
-                    {props.userLogged
-                        ? (<View>
-                            <Image source={{ uri: props.userLogged.userPicture }} style={{ width: 150, height: 150 }} />
-                            <View>
-                                <Text>{props.userLogged.firstName}</Text>
-                            </View>
-                        </View>)
-                        : null
-                    }
-                    <View style={styles.welcome}>
-                        <Text style={{ fontSize: 30, color: 'white', textAlign: 'center' }}>Some of the most visited cities in the world</Text>
+                        {/* <Text style={{ fontSize: 30, color: 'white', textAlign: 'center' }}>Some of the most visited cities in the world</Text> */}
+                    <View style={{width:'100%', height:500}}>
+                        <View style={{flex:1, flexDirection:'row'}}>
+                        <ImageBackground source={{ uri: 'https://i.imgur.com/rZe2XZG.jpg' }} style={{ flex: 2, margin:5 }}>
+                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Triumphal Arch</Text>
+                                </ImageBackground>
+                                <ImageBackground source={{ uri: 'https://i.imgur.com/hSHbYbv.jpg' }} style={{ flex: 1, margin:5 }}>
+                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Liberty Statue</Text>
+                                </ImageBackground>
+                        </View>
+                        <ImageBackground source={{uri:'https://i.imgur.com/ozupj7K.jpg'}} style={{flex:1, margin:5}}>
+                        <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Central Station</Text>
+                        </ImageBackground>
                     </View>
                     <ScrollView  >
                         <View style={{ width: 400, height: 500, flexDirection: 'row' }}>
-                            <ImageBackground source={{ uri: cities[0].src }} style={{ margin: 5, flex: 1 }}>
-                                <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[0].header}</Text>
+                            <ImageBackground source={{ uri: 'https://i.imgur.com/btQjTyO.jpg' }} style={{ margin: 5, flex: 1 }}>
+                                <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Barcelona Cathedral</Text>
                             </ImageBackground>
                             <View style={{ flex: 1 }}>
-                                <ImageBackground source={{ uri: cities[1].src }} style={{ margin: 5, flex: 2 }}>
-                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[1].header}</Text>
+                                <ImageBackground source={{ uri: 'https://i.imgur.com/JwiGaDC.jpg' }} style={{ margin: 5, flex: 2 }}>
+                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Wall Street</Text>
                                 </ImageBackground>
-                                <ImageBackground source={{ uri: cities[2].src }} style={{ margin: 5, flex: 3 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[2].header}</Text></ImageBackground>
+                                <ImageBackground source={{ uri: 'https://i.imgur.com/Q3zJFBf.jpg' }} style={{ margin: 5, flex: 3 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Obelisk</Text></ImageBackground>
                             </View>
                         </View>
                         <View style={{ width: 400, height: 500, flexDirection: 'row' }}>
                             <View style={{ flex: 1 }}>
-                                <ImageBackground source={{ uri: cities[3].src }} style={{ margin: 5, flex: 3 }}>
-                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[3].header}</Text>
+                                <ImageBackground source={{ uri: 'https://i.imgur.com/jEVTrHz.jpg' }} style={{ margin: 5, flex: 3 }}>
+                                    <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Iguazu Falls</Text>
                                 </ImageBackground>
-                                <ImageBackground source={{ uri: cities[4].src }} style={{ margin: 5, flex: 2 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[4].header}</Text></ImageBackground>
+                                <ImageBackground source={{ uri: 'https://i.imgur.com/uOEEBiK.jpg' }} style={{ margin: 5, flex: 2 }}><Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Beacon of the End of The World</Text></ImageBackground>
                             </View>
-                            <ImageBackground source={{ uri: cities[5].src }} style={{ margin: 5, flex: 1 }}>
-                                <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>{cities[5].header}</Text>
+                            <ImageBackground source={{ uri: 'https://i.imgur.com/cmziMvF.jpg'}} style={{ margin: 5, flex: 1 }}>
+                                <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Grand Canyon</Text>
                             </ImageBackground>
                         </View>
                         {/* {cities.map((city, index) => {

@@ -63,7 +63,6 @@ const Stack = (props) => {
       background: '#0094ef',
     }
   }
-  console.log(theme);
   let headerUserModify = () => <UserLogged userPicture={!props.userLogged ? 'https://i.imgur.com/Wkk311i.png' : props.userLogged.userPicture} />
   return (
     <stack.Navigator screenOptions={{
