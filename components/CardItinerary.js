@@ -128,7 +128,7 @@ const Itineraries = (props) => {
                                         </ScrollView>
                                     </View>
                                     <View  >
-                                        <TextInput placeholder={!props.userLogged ? "You need to be logged to comment!" : "Write a comment..."} value={comment} disabled={!props.userLogged && true} onChangeText={(e) => setComment(e)} />
+                                        <TextInput theme={{colors:{primary:'#0BC6C3'}}} placeholder={!props.userLogged ? "You need to be logged to comment!" : "Write a comment..."} value={comment} disabled={!props.userLogged && true} onChangeText={(e) => setComment(e)} />
                                         <Button mode="contained" color="#E7B61B" disabled={props.userLogged ? false : true} onPress={sendComment}>send</Button>
                                     </View>
                                 </View>

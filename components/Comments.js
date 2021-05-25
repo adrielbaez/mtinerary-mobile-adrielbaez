@@ -47,7 +47,7 @@ const Comment = ({ comment, userLogged, idItinerary, deleteCommentAction, update
                 {visible ?
                     <View style={{flexDirection:'row', marginTop:10}}>
                         <View>
-                            <TextInput style={{width: 200}} onChangeText={(e) => setUpdatedComment(e)} value={updatedComment} />
+                            <TextInput theme={{colors:{primary:'#0BC6C3'}}} style={{width: 200}} onChangeText={(e) => setUpdatedComment(e)} value={updatedComment} />
                             <Button mode="contained" color="#E7B61B" onPress={commentUpdate} >Update</Button>
                         </View>
                         <View >
