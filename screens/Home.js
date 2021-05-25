@@ -58,7 +58,7 @@ const Home = (props) => {
         )
     }
     const { open } = state;
-    let fabMenu = props.userLogged ? ({ icon: 'star', label: 'Log Out', onPress: alertLogOut }) : ({ icon: 'star', label: 'Sign In', onPress: () => props.navigation.navigate('signIn'), }, { icon: 'email', label: 'Sign', onPress: () => props.navigation.navigate('signUp'), })
+    let fabMenu = props.userLogged ? ({ icon: 'logout', label: 'Log Out', onPress: alertLogOut }) : ({ icon: 'star', label: 'Sign Up', onPress: () => props.navigation.navigate('signUp'), }, { icon: 'tooltip-account', label: 'Sign', onPress: () => props.navigation.navigate('signIn'), })
     return (
         <>
             <ScrollView>
@@ -115,21 +115,21 @@ const Home = (props) => {
                 </View>
                 <Portal>
                     <FAB.Group
-                        color="blue"
                         open={open}
-                        icon={open ? 'calendar-today' : 'plus'}
+                        icon={open ? 'close-thick' : 'menu'}
                         actions={[
                             {
-                                icon: 'bell',
+                                icon: 'home',
+                                label: 'Home',
+                                onPress: () => props.navigation.navigate('home'),
+                            },
+                            {
+                                icon: 'city',
                                 label: 'Cities',
                                 onPress: () => props.navigation.navigate('cities'),
                                 small: false,
                             },
-                            {
-                                icon: 'star',
-                                label: 'Home',
-                                onPress: () => props.navigation.navigate('home'),
-                            },
+                           
                             fabMenu
                         ]}
                         onStateChange={onStateChange}

@@ -13,7 +13,7 @@ const Welcome = (props) => {
                     <Text style={styles.title}>MyTinerary</Text>
                     <Text style={{fontSize:20, color:'white', textAlign:'center'}}>Find your perfect trip, designed by insiders who know and love their cities!</Text>
                 </View> */}
-                <Button style={styles.boton} mode="contained" color="#0BC6C3" onPress={()=> props.navigation.navigate('home')}>Get Started</Button>
+                <Button style={styles.boton} mode="contained" color="#0BC6C3" onPress={()=> props.navigation.navigate('home')}>Get Started</Button> 
             </ImageBackground>
         </>
      );

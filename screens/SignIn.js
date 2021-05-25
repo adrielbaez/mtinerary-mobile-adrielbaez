@@ -45,8 +45,8 @@ const SignIn = (props) => {
                         <Text style={{ fontSize: 30, color: 'black', textAlign: 'center' }}>Mytinerary</Text>
                     </View>
                     <View style={[globalStyles.allScreem, { width: '90%', marginBottom:20 }]}>
-                        <TextInput keyboardType="email-address" label="Your Mail" mode="outlined" value={userLogin.email} onChangeText={(e) => readInput(e, 'email')} />
-                        <TextInput keyboardType="email-address"  label="Your Password" mode="outlined"  value={userLogin.password} onChangeText={(e) => readInput(e, 'password')} secureTextEntry />
+                        <TextInput theme={{colors:{primary:'#0BC6C3'}}} label="Your Mail" mode="outlined" value={userLogin.email} onChangeText={(e) => readInput(e, 'email')} />
+                        <TextInput theme={{colors:{primary:'#0BC6C3'}}} secureTextEntry  label="Your Password" mode="outlined"  value={userLogin.password} onChangeText={(e) => readInput(e, 'password')} />
                     </View>
                     <Button style={globalStyles.botonesMedium} mode="contained" color="#E7B61B" onPress={sendDataUser} >Sign In</Button>
                     <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', width: '90%' }}>

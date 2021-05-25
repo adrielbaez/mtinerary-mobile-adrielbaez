@@ -10,8 +10,47 @@ import SignIn from '../screens/SignIn'
 import SignUp from '../screens/SignUp'
 import Itineraries from '../screens/Itineraries'
 import UserLogged from '../components/UserLogged';
+import { useState } from 'react';
+import authActions from '../redux/actions/authActions'
+import { useEffect } from 'react';
 
 const Stack = (props) => {
+  const [tokenAS, setTokenAS]= useState(null)
+
+  const getTokenAS = async ()=>{
+    try {
+      let getToken = await AsyncStorage.getItem('token')
+      setTokenAS(getToken)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(()=>{
+    getTokenAS()
+  },[])
+
+  if (!props.userLogged && tokenAS) {
+    let dataUser;
+    const getUserLoggedAS = async ()=>{
+      try {
+        let getValue = await AsyncStorage.getItem('userLogged')
+        dataUser = getValue !== null ? JSON.parse(getValue) : null
+
+        console.log(dataUser);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getUserLoggedAS()
+    const userAS = {
+      token: tokenAS,
+      ...dataUser
+    }
+    props.iniciarSesionLS(userAS)
+    setTokenAS(null)
+  }
+ 
+
   const stack = createStackNavigator()
   const {DefaultTheme}=props
   
@@ -37,11 +76,13 @@ const Stack = (props) => {
       },
       headerTitleAlign: 'center'
     }}>
-      <stack.Screen name="welcome" component={Welcome} options={{
-        title: 'Welcome',
-        headerRight: headerUserModify,
-        headerShown: false
-      }} />
+      {!props.userLogged 
+        ?(<stack.Screen name="welcome" component={Welcome} options={{
+          title: 'Welcome',
+          headerRight: headerUserModify,
+          headerShown: false
+        }} />)
+      :null}
       <stack.Screen name="home" component={Home} options={{
         title: 'Home',
         headerRight: headerUserModify
@@ -74,11 +115,11 @@ const mapStateToProps = state => {
   }
 }
 
-//   const mapDispatchToProps = {
-//     iniciarSesionLS: authActions.iniciarSesionLS,
-//   }
+  const mapDispatchToProps = {
+    iniciarSesionLS: authActions.iniciarSesionLS,
+  }
 
-export default connect(mapStateToProps, null)(Stack)
+export default connect(mapStateToProps, mapDispatchToProps)(Stack)
 
 
 // import Home from '../screens/Home';
