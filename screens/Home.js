@@ -92,7 +92,7 @@ const Home = (props) => {
                             </ImageBackground>
                         </View>
                         <ImageBackground source={{ uri: 'https://i.imgur.com/ozupj7K.jpg' }} style={{ flex: 1, margin: 5 }}>
-                            <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Central Station</Text>
+                            <Text style={{ color: 'white', backgroundColor: 'rgba(0, 0, 0, 0.2)', width: '100%', textAlign: 'center' }}>Grand Central Station</Text>
                         </ImageBackground>
                     </View>
                     <ScrollView  >

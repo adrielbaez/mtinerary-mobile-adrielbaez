@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Image, ImageBackground, ScrollView, ActivityInd
 
 const ItinerariesEmpty = ({ texto, imagen, city }) => {
     let image = { uri: imagen }
-    let cityName = city ? city : null
+    let cityName = city ? city : ''
     return (
         <ImageBackground source={image} style={{ width: '100%', alignItems: 'center', height: 400, justifyContent: 'center', marginBottom: 15 }}>
             <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)',borderRadius:40}}>
